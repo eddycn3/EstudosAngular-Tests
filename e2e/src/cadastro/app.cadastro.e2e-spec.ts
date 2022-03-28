@@ -14,7 +14,7 @@ describe('Testes do formulario de cadastro', () => {
   });
 
   it('deve preencher formulário de cadastro com sucesso', () => {
-    page.campoNome.sendKeys('Eduardo Neto');
+    page.campoNome.sendKeys('Eduardo NETO');
     page.campoCPF.sendKeys('30390600822');
     page.campoEmail.sendKeys('teste@teste.com');
     page.campoSenha.sendKeys('Teste@123');
@@ -23,13 +23,13 @@ describe('Testes do formulario de cadastro', () => {
     page.botaoRegistrar.click();
     page.esperar(1000);
 
-    expect(page.obterResultadoCadastro()).toContain('"nome":"Eduardo Neto"');
+    expect(page.obterResultadoCadastro()).toContain('"nome":"Eduardo NETO"');
   });
 
   it('deve validar senhas diferentes', () => {
     page.iniciarNavegacao();
 
-    page.campoNome.sendKeys('Eduardo Neto');
+    page.campoNome.sendKeys('Eduardo NETO');
     page.campoCPF.sendKeys('30390600822');
     page.campoEmail.sendKeys('teste@teste.com');
     page.campoSenha.sendKeys('Teste@2123');
