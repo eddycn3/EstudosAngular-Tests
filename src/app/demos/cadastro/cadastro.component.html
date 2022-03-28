@@ -1,0 +1,105 @@
+<div class="container main-container">
+    <h4>Demo Cadastro</h4>
+    <hr/>
+
+    <form novalidate (ngSubmit)="adicionarUsuario()" [formGroup]="cadastroFormGroup">
+        <div class="form-horizontal">
+            
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="nome">Nome Completo</label>
+                <!-- JEITO SIMPLICADO -->
+                <!-- <div class="col-md-10">
+                    <input class="form-control" id="nome" type="text" placeholder="Nome (requerido)" formControlName="nome" [ngClass]="{'is-invalid': cadastroFormGroup.get('nome').errors && (cadastroFormGroup.get('nome').dirty || cadastroFormGroup.get('nome').touched)}"/>
+                    <span class="text-danger" *ngIf="cadastroFormGroup.get('nome').errors && (cadastroFormGroup.get('nome').dirty || cadastroFormGroup.get('nome').touched)">
+                       O Nome é obrigatório!
+                    </span>
+                </div> -->
+
+                <!-- MELHOR PRATICA -->
+                <div class="col-md-10">
+                    <input class="form-control" id="nome" type="text" placeholder="Nome (requerido)" formControlName="nome" [ngClass]="{'is-invalid': displayMessage.nome}"/>
+                    <span class="text-danger" *ngIf="displayMessage.nome">
+                       <p [innerHTML]="displayMessage.nome"></p>
+                    </span>
+                </div>
+              
+            </div>
+            <div class ="form-group">
+                <label class="col-md-2 control-label" for="cpf">CPF</label>
+                
+                <!-- <div class="col-md-10">
+                    <input class="form-control" id="cpf" type="text" placeholder="CPF (requerido)" formControlName="cpf"  cpf [textMask]="{mask : MASKS.cpf.textMask}"/>
+                    <span class="text-danger" *ngIf="cadastroFormGroup.get('cpf')?.errors?.cpf && (cadastroFormGroup.get('cpf').dirty || cadastroFormGroup.get('cpf').touched)">
+                        O CPF é inválido!
+                    </span>
+
+                </div> -->
+                <div class="col-md-10">
+                    <input class="form-control" id="cpf" type="text" placeholder="CPF (requerido)" formControlName="cpf"  cpf [textMask]="{mask : MASKS.cpf.textMask}"/>
+                    <span class="text-danger" *ngIf="displayMessage.cpf">
+                        <p [innerHTML]="displayMessage.cpf"></p>
+                    </span>
+
+                </div>
+
+            </div>
+            <div class ="form-group">
+                <label class="col-md-2 control-label" for="email">E-mail</label>
+                <!-- <div class="col-md-10">
+                    <input class="form-control" id="email" type="text" placeholder="E-email (requerido)" formControlName="email" [ngClass]="{'is-invalid': cadastroFormGroup.get('email')?.errors && (cadastroFormGroup.get('email').dirty || cadastroFormGroup.get('email').touched)}"/>
+                    <span class="text-danger" *ngIf="cadastroFormGroup.get('email')?.errors?.required && (cadastroFormGroup.get('email').dirty || cadastroFormGroup.get('email').touched)">
+                        O E-mail é obrigatório!
+                    </span>
+                    <span class="text-danger" *ngIf="cadastroFormGroup.get('email')?.errors?.email && (cadastroFormGroup.get('email').dirty || cadastroFormGroup.get('email').touched)">
+                        O E-mail é inválido!
+                    </span>
+                </div> -->
+
+                <div class="col-md-10">
+                    <input class="form-control" id="email" type="text" placeholder="E-email (requerido)" formControlName="email" [ngClass]="{'is-invalid': displayMessage.email}"/>
+                    <span class="text-danger" *ngIf="displayMessage.email">
+                    <p [innerHTML]="displayMessage.email"></p>
+                    </span>
+                   
+                </div>
+
+            </div>
+
+            <div class ="form-group">
+                <label class="col-md-2 control-label" for="senha">Senha</label>
+                <!-- <div class="col-md-10">
+                    <input class="form-control" id="senha" type="password" placeholder="Senha (requerido)" formControlName="senha"/>
+                    <span class="text-danger" *ngIf="cadastroFormGroup.get('senha')?.errors?.rangeLength && (cadastroFormGroup.get('senha').dirty || cadastroFormGroup.get('senha').touched)">
+                        A senha deve ter de 8 a 15 caractéres!
+                    </span>
+                </div> -->
+
+                <div class="col-md-10">
+                    <input class="form-control" id="senha" type="password" placeholder="Senha (requerido)" formControlName="senha" [ngClass]="{'is-invalid': displayMessage.senha}"/>
+                    <span class="text-danger" *ngIf="displayMessage.senha">
+                       <p [innerHTML] = "displayMessage.senha"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class ="form-group">
+                <label class="col-md-2 control-label">Confirme a Senha</label>
+                <!-- <div class="col-md-10">
+                    <input class="form-control" id="senhaConfirmacao" type="password" placeholder="Confirme a senha (requerida)" formControlName="senhaConfirmacao"/>
+                </div> -->
+                <div class="col-md-10">
+                    <input class="form-control" id="senhaConfirmacao" type="password" placeholder="Senha (requerido)" formControlName="senhaConfirmacao" [ngClass]="{'is-invalid': displayMessage.senhaConfirmacao}"/>
+                    <span class="text-danger" *ngIf="displayMessage.senhaConfirmacao">
+                       <p [innerHTML] = "displayMessage.senhaConfirmacao"></p>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-md-4 col-md-offset-2" >
+                    <span><button class="btn btn-success" id="Registrar" type="submit" [disabled]="!cadastroFormGroup.valid">Registrar</button></span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
